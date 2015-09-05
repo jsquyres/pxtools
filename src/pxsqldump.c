@@ -140,7 +140,7 @@ int create_sql_INSERT(px_header *header, px_fieldInfo **felder, px_records block
 			switch(PXtoLong(s, &d, felder[i]->type))
 			{
 			    case VALUE_OK:
-				printf("%Ld", d );
+				printf("%lld", d );
 				break;
 			    case VALUE_IS_NULL:
 			    case VALUE_ERROR:
@@ -161,7 +161,7 @@ int create_sql_INSERT(px_header *header, px_fieldInfo **felder, px_records block
 			switch(PXtoLong(s, &d, felder[i]->type))
 			{
 			    case VALUE_OK:
-				printf("%Lx", d);
+				printf("%llx", d);
 				break;
 			    case VALUE_IS_NULL:
 			    case VALUE_ERROR:
@@ -181,7 +181,7 @@ int create_sql_INSERT(px_header *header, px_fieldInfo **felder, px_records block
 			switch(PXtoLong(s, &d, felder[i]->type))
 			{
 			    case VALUE_OK:
-				printf("%Ld", d );
+				printf("%lld", d );
 				break;
 			    case VALUE_IS_NULL:
 			    case VALUE_ERROR:
@@ -201,7 +201,7 @@ int create_sql_INSERT(px_header *header, px_fieldInfo **felder, px_records block
 			switch(PXtoLong(s, &d, felder[i]->type))
 			{
 			    case VALUE_OK:
-				printf("%Ld", d );
+				printf("%lld", d );
 				break;
 			    case VALUE_IS_NULL:
 			    case VALUE_ERROR:

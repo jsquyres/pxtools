@@ -85,7 +85,7 @@ int create_csv_line(px_header *header, px_fieldInfo **felder, px_records block, 
 			switch(PXtoLong(s, &d, felder[i]->type))
 			{
 			    case VALUE_OK:
-				printf("%Ld", d );
+				printf("%lld", d );
 				break;
 			    case VALUE_IS_NULL:
 				printf("NULL");
@@ -105,7 +105,7 @@ int create_csv_line(px_header *header, px_fieldInfo **felder, px_records block, 
 			switch(PXtoLong(s, &d, felder[i]->type))
 			{
 			    case VALUE_OK:
-				printf("%Lx", d);
+				printf("%llx", d);
 				break;
 			    case VALUE_IS_NULL:
 				printf("NULL");
@@ -124,7 +124,7 @@ int create_csv_line(px_header *header, px_fieldInfo **felder, px_records block, 
 			switch(PXtoLong(s, &d, felder[i]->type))
 			{
 			    case VALUE_OK:
-				printf("%Ld", d);
+				printf("%lld", d);
 				break;
 			    case VALUE_IS_NULL:
 				printf("NULL");
@@ -143,7 +143,7 @@ int create_csv_line(px_header *header, px_fieldInfo **felder, px_records block, 
 			switch(PXtoLong(s, &d, felder[i]->type))
 			{
 			    case VALUE_OK:
-				printf("%Ld", d);
+				printf("%lld", d);
 				break;
 			    case VALUE_IS_NULL:
 				printf("NULL");

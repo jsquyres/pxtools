@@ -167,7 +167,7 @@ int showRecord (char *block, px_header *header, px_fieldInfo **felder)
 			switch(PXtoLong(s, &d, felder[i]->type))
 			{
 			    case VALUE_OK:
-				printf("%Li", d );
+				printf("%lli", d );
 				break;
 			    case VALUE_IS_NULL:
 				printf("NULL");
@@ -187,7 +187,7 @@ int showRecord (char *block, px_header *header, px_fieldInfo **felder)
 			switch(PXtoLong(s, &d, felder[i]->type))
 			{
 			    case VALUE_OK:
-				printf("%Lx", d);
+				printf("%llx", d);
 				break;
 			    case VALUE_IS_NULL:
 				printf("NULL");
@@ -319,11 +319,11 @@ int showRecord (char *block, px_header *header, px_fieldInfo **felder)
 
 		BLOCK_COPY(&s,2);
 		PXtoLong(s, &d, PX_Field_Type_ShortInt);
-		printf("BlockNumber: %Li\n", d);
+		printf("BlockNumber: %lli\n", d);
 
 		BLOCK_COPY(&s,2);
 		PXtoLong(s, &d, PX_Field_Type_ShortInt);
-		printf("Statistics: %Li\n", d);
+		printf("Statistics: %lli\n", d);
 	}
 #undef BLOCK_COPY
 	return 0;
