@@ -25,9 +25,9 @@ int name_quoting = -1;
 #define OPT_MYSQL "mysql"
 #define OPT_PGSQL "pgsql"
 
-char * str_to_sql(const unsigned char *src);
+char * str_to_sql(const char *src);
 char * binary_to_sql(const unsigned char *src, int src_len, int *dst_len);
-char * quote(const unsigned char *src, const unsigned int name_quoting);
+char * quote(const char *src, const unsigned int name_quoting);
 
 int create_sql_CREATE(px_header *header, px_fieldInfo **felder)
 {
@@ -400,7 +400,7 @@ int create_sql_dump(px_header *header, px_fieldInfo **felder, px_blocks **blocks
 	return 0;
 }
 	
-char * str_to_sql(const unsigned char *src)
+char * str_to_sql(const char *src)
 {
 	unsigned int i, add;
 	char * dst = NULL;
@@ -490,7 +490,7 @@ char * binary_to_sql(const unsigned char *src, int src_len, int *dst_len)
 	return dst;
 }
 
-char *quote(const unsigned char *src, const unsigned int name_quoting)
+char *quote(const char *src, const unsigned int name_quoting)
 {
 	unsigned int len;
 	char *dst = NULL;

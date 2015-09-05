@@ -20,7 +20,7 @@
 
 static int delim = '\t';
 
-int PXtoCSVString(char *dst, const unsigned char *src, int type)
+int PXtoCSVString(char *dst, const char *src, int type)
 {
 	switch (type)
 	{

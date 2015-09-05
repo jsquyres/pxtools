@@ -325,7 +325,7 @@ px_blocks **PXparseBlocks (int fd, px_header *header) {
 #ifdef DEBUG	
 		printf("FD-IDX: %x\n",file_index);
 	#define BLOCK_COPY_S(x,size) \
-		copy_from_le(x,   block + block_index, size); \
+		copy_from_le(x, (const char *) (block + block_index), size); \
 		printf("Bl-IDX1: %04x\n",block_index); \
 		block_index += size; 
 	#define BLOCK_COPY(x,size) \
@@ -334,7 +334,7 @@ px_blocks **PXparseBlocks (int fd, px_header *header) {
 		block_index += size; 
 #else
 	#define BLOCK_COPY_S(x,size) \
-		copy_from_le(x,   block + block_index, size); \
+		copy_from_le(x, (const char *) (block + block_index), size); \
 		block_index += size; 
 	#define BLOCK_COPY(x,size) \
 		memcpy(x,   block + block_index, size); \

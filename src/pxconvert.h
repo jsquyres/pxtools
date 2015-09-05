@@ -10,7 +10,7 @@
 int	PXtoLong(unsigned long long number, unsigned long long *ret, int type);
 int 	PXtoDouble(unsigned long long number, double *ret, int type);
 int	PXtoTM (unsigned long long number, struct tm *tm, int type);
-int	PXtoQuotedString(char *dst, const unsigned char *src, int type);
+int	PXtoQuotedString(char *dst, const char *src, int type);
 char *	PXNametoQuotedName(char *str);
 char *	PXMEMOtoString(void *blob, int size, char *blobname);
 int     PXBLOBtoBinary(void *blob, int size, char *blobname, void ** binstorage, int *binsize);

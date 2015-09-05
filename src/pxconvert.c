@@ -169,11 +169,11 @@ int PXtoDouble(unsigned long long number, double *ret, int type) {
 	switch (type) {
 	case PX_Field_Type_Currency: 
 	case PX_Field_Type_Number: 
-		copy_from_be(d,s,8);
+		copy_from_be(d, (const char *) s,8);
 		
 		if (s[0] & 0x80) {
 			/* positive */
-			fix_sign(d, 8);
+			fix_sign((char*) d, 8);
 		} else if (retval == 0) {
 			return VALUE_IS_NULL;
 		} else {
@@ -312,7 +312,8 @@ int PXtoTM (unsigned long long number, struct tm *tm, int type ) {
 	return VALUE_OK;
 }
 
-int PXtoQuotedString(char *dst, const unsigned char *src, int type) {
+int PXtoQuotedString(char *dst, const char *src, int type) {
+	const unsigned char *usrc = (const unsigned char*) src;
 	switch (type) {
 	    case PX_Field_Type_Alpha:
 	    case PX_Field_Type_MemoBLOB:
@@ -324,8 +325,8 @@ int PXtoQuotedString(char *dst, const unsigned char *src, int type) {
 		return -1;
 	}
 	
-	while(*src) {
-		switch(*src) {
+	while(*usrc) {
+		switch(*usrc) {
 /* cp431(??) -> latin1 */
 			case 0x81: *dst = 'ü'; break;
 			case 0x84: *dst = 'ä'; break;
@@ -334,17 +335,17 @@ int PXtoQuotedString(char *dst, const unsigned char *src, int type) {
 			case 0x99: *dst = 'Ö'; break;
 			case 0x9a: *dst = 'Ü'; break;
 			case 0xe1: *dst = 'ß'; break;
-			default: *dst = *src;
+			default: *dst = (char) *usrc;
 		}
 		dst++;
-		src++;
+		usrc++;
 	}
 	*dst = '\0';
 	return 0;
 }
 
 char *PXNametoQuotedName(char *str) {
-	unsigned char *s = str;
+	unsigned char *s = (unsigned char*) str;
 	while(*s) {
 		switch(*s) {
 			case 0x81: *s = 'ü'; break;
